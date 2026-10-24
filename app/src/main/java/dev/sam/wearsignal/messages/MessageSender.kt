@@ -342,7 +342,8 @@ object MessageSender {
         sentAt = sentAt,
         serverAt = sentAt,
         fromSelf = true,
-        attachmentType = if (voiceNote != null) VOICE_NOTE_CONTENT_TYPE else null
+        attachmentType = if (voiceNote != null) VOICE_NOTE_CONTENT_TYPE else null,
+        attachmentVoice = voiceNote != null
       )
       if (inserted && voiceNote != null) {
         storeOwnVoiceNote(peer, senderAci, sentAt, voiceNote)
