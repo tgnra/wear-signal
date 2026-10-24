@@ -73,6 +73,7 @@ fun ThreadScreen(
   pollStatus: String?,
   onPoll: () -> Unit,
   onReply: () -> Unit,
+  onRecordVoice: () -> Unit,
   onReact: (MessageRow, String) -> Unit,
   onReactCustom: (MessageRow) -> Unit
 ) {
@@ -141,6 +142,14 @@ fun ThreadScreen(
             colors = ChipDefaults.primaryChipColors(),
             modifier = Modifier.weight(1f)
           )
+          Spacer(modifier = Modifier.width(4.dp))
+          Button(
+            onClick = onRecordVoice,
+            colors = ButtonDefaults.secondaryButtonColors(),
+            modifier = Modifier.size(ButtonDefaults.SmallButtonSize)
+          ) {
+            Text("🎙")
+          }
           Spacer(modifier = Modifier.width(4.dp))
           Button(
             onClick = onPoll,
