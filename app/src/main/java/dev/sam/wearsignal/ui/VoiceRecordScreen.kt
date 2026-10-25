@@ -35,13 +35,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.ButtonDefaults
 import androidx.wear.compose.material.CircularProgressIndicator
+import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import dev.sam.wearsignal.R
 import dev.sam.wearsignal.messages.MessageSender
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -245,7 +248,11 @@ private fun RecordControls(recording: Boolean, elapsedMs: Long, onTap: () -> Uni
       // Stop: a white rounded square.
       Box(modifier = Modifier.size(20.dp).clip(RoundedCornerShape(4.dp)).background(Color.White))
     } else {
-      Text("🎙", style = MaterialTheme.typography.title2)
+      Icon(
+        painter = painterResource(R.drawable.ic_mic),
+        contentDescription = "Start recording",
+        modifier = Modifier.size(28.dp)
+      )
     }
   }
 }

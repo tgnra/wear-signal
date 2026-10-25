@@ -35,6 +35,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
@@ -43,8 +44,10 @@ import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.ButtonDefaults
 import androidx.wear.compose.material.Chip
 import androidx.wear.compose.material.ChipDefaults
+import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import dev.sam.wearsignal.R
 import dev.sam.wearsignal.messages.MessageRow
 import dev.sam.wearsignal.messages.attachmentPlaceholder
 import java.text.DateFormat
@@ -137,7 +140,7 @@ fun ThreadScreen(
       item {
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(top = 4.dp)) {
           Chip(
-            label = { Text("Reply") },
+            label = { Text("Reply", textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth()) },
             onClick = onReply,
             colors = ChipDefaults.primaryChipColors(),
             modifier = Modifier.weight(1f)
@@ -148,7 +151,11 @@ fun ThreadScreen(
             colors = ButtonDefaults.secondaryButtonColors(),
             modifier = Modifier.size(ButtonDefaults.SmallButtonSize)
           ) {
-            Text("🎙")
+            Icon(
+              painter = painterResource(R.drawable.ic_mic),
+              contentDescription = "Record voice message",
+              modifier = Modifier.size(18.dp)
+            )
           }
           Spacer(modifier = Modifier.width(4.dp))
           Button(
